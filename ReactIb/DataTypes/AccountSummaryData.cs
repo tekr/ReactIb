@@ -21,9 +21,6 @@ namespace ReactIb.DataTypes
             Currency = currency;
         }
 
-        public override string ToString()
-        {
-            return $"RequestId: {RequestId} Account: {Account} Ccy: {Currency} Key: {Key} Value: {Value}";
-        }
+        public override string ToString() => $"RequestId: {RequestId} Account: {Account} Ccy: {Currency} Key: {Key} Value: {Value}";
     }
 }

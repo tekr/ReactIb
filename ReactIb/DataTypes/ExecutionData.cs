@@ -20,9 +20,6 @@ namespace ReactIb.DataTypes
             Contract = contract;
         }
 
-        public override string ToString()
-        {
-            return $"ReqId: {RequestId} OrderIbApiId: {OrderId} OrderPermId: {Execution.PermId} ConId: {Contract.ConId} Qty: {Execution.Shares} Price: {Execution.Price}";
-        }
+        public override string ToString() => $"ReqId: {RequestId} OrderIbApiId: {OrderId} OrderPermId: {Execution.PermId} ConId: {Contract.ConId} Qty: {Execution.Shares} Price: {Execution.Price}";
     }
 }

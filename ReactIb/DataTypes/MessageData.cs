@@ -15,9 +15,6 @@ namespace ReactIb.DataTypes
             Value = value;
         }
 
-        public override string ToString()
-        {
-            return $"Code: {Code} ReqId: {RequestId} Value: {Value}";
-        }
+        public override string ToString() => $"Code: {Code} ReqId: {RequestId} Value: {Value}";
     }
 }

@@ -20,9 +20,6 @@ namespace ReactIb.DataTypes
             Position = position;
         }
 
-        public override string ToString()
-        {
-            return $"Account: {Account} Contract: {Contract} Position: {Position} AvgCost: {AverageCost}";
-        }
+        public override string ToString() => $"Account: {Account} Contract: {Contract} Position: {Position} AvgCost: {AverageCost}";
     }
 }

@@ -123,15 +123,9 @@ namespace ReactIb
                                                                                                 ? new TwsException(message.Code, message.Value, message.Code != 200)
                                                                                                 : null;
 
-            protected virtual bool IsCompletionMessage(DataTypes.MessageData message)
-            {
-                return false;
-            }
+            protected virtual bool IsCompletionMessage(DataTypes.MessageData message) => false;
 
-            private bool IsForThisRequest<T>(T item, Func<T, int> idExtractor, int id)
-            {
-                return !UsesRequestIds || idExtractor(item) == id;
-            }
+            private bool IsForThisRequest<T>(T item, Func<T, int> idExtractor, int id) => !UsesRequestIds || idExtractor(item) == id;
         }
     }
 }

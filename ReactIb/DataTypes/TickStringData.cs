@@ -17,9 +17,6 @@ namespace ReactIb.DataTypes
             TickType = tickType;
         }
 
-        public override string ToString()
-        {
-            return $"RequestId: {RequestId} TickType: {TickType} Value: {Value}";
-        }
+        public override string ToString() => $"RequestId: {RequestId} TickType: {TickType} Value: {Value}";
     }
 }

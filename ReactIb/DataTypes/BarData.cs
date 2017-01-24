@@ -38,9 +38,6 @@ namespace ReactIb.DataTypes
             HasGaps = hasGaps;
         }
 
-        public override string ToString()
-        {
-            return $"ReqId: {RequestId} Date: {DateTime} Op: {Open} Hi: {High} Lo: {Low} Cl: {Close} Vol: {Volume} Trades: {Trades} Wap: {Wap}";
-        }
+        public override string ToString() => $"ReqId: {RequestId} Date: {DateTime} Op: {Open} Hi: {High} Lo: {Low} Cl: {Close} Vol: {Volume} Trades: {Trades} Wap: {Wap}";
     }
 }

@@ -20,9 +20,6 @@ namespace ReactIb.DataTypes
             Value = value;
         }
 
-        public override string ToString()
-        {
-            return $"Account: {Account} Ccy: {Currency} Key: {Key} Value: {Value}";
-        }
+        public override string ToString() => $"Account: {Account} Ccy: {Currency} Key: {Key} Value: {Value}";
     }
 }

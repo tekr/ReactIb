@@ -7,10 +7,7 @@ namespace ReactIb.Utils
     {
         private TaskCompletionSource<bool> _taskCompletionSource = new TaskCompletionSource<bool>();
 
-        public Task WaitAsync()
-        {
-            return _taskCompletionSource.Task;
-        }
+        public Task WaitAsync() => _taskCompletionSource.Task;
 
         public void Set()
         {

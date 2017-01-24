@@ -29,9 +29,6 @@ namespace ReactIb.DataTypes
             Size = size;
         }
 
-        public override string ToString()
-        {
-            return $"RequestId: {RequestId} RowNum: {RowNum} ExchangeName: {ExchangeName} Operation: {Operation} Side: {Side} Price: {Price} Size: {Size}";
-        }
+        public override string ToString() => $"RequestId: {RequestId} RowNum: {RowNum} ExchangeName: {ExchangeName} Operation: {Operation} Side: {Side} Price: {Price} Size: {Size}";
     }
 }
