@@ -17,7 +17,8 @@ namespace ReactIb
 {
     public partial class TwsApi : ITwsApi
     {
-        private const int DefaultPort = 4001;
+        private const string DefaultHost = "localhost";
+        private const int DefaultPort = 7496;
         private const int ReconectIntervalMs = 1000;
 
         public int ClientId { get; }
@@ -61,18 +62,18 @@ namespace ReactIb
         private bool _disposed;
         private Thread _processingThread;
 
-        public TwsApi(ILog log, string host = null, int? port = null, int clientId = 0)
+        public TwsApi(string host = null, int? port = null, int clientId = 0, ILog log = null)
         {
-            _log = log;
+            _host = host ?? DefaultHost;
             _port = port ?? DefaultPort;
-            _host = host;
             ClientId = clientId;
+            _log = log ?? NullLogger.Instance;
 
             Message = _ibClient.Message;
             OpenOrders = _ibClient.OpenOrder;
             OrderStatus = _ibClient.OrderStatus;
 
-            // Filter out executions received for a specific request
+            // Filter out executions received for a specific request id (which will be >= 0)
             Execution = _ibClient.Execution.Where(ed => ed.RequestId < 0);
             Portfolio = _ibClient.Portfolio;
             Account = _ibClient.Account;

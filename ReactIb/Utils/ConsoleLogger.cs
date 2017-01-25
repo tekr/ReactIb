@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ConsoleTestApp
+namespace ReactIb.Utils
 {
-    public class SimpleConsoleLogger : ReactIb.Utils.ILog
+    public class ConsoleLogger : ILog
     {
         public void Info(object msg)
         {

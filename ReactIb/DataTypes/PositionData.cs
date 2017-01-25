@@ -8,11 +8,11 @@ namespace ReactIb.DataTypes
 
         public Contract Contract { get; }
 
-        public int Position { get; }
+        public decimal Position { get; }
 
         public decimal AverageCost { get; }
 
-        public PositionData(string account, Contract contract, int position, decimal averageCost)
+        public PositionData(string account, Contract contract, decimal position, decimal averageCost)
         {
             Account = account;
             AverageCost = averageCost;

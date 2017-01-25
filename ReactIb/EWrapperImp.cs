@@ -333,9 +333,9 @@ namespace ReactIb
             _newsBulletin.OnNext(new NewsBulletinData(msgId, (NewsType)msgType, message, origExchange));
         }
 
-        public void position(string account, Contract contract, int pos, double avgCost)
+        public void position(string account, Contract contract, double pos, double avgCost)
         {
-            _position.OnNext(new PositionData(account, contract, pos, (decimal)avgCost));
+            _position.OnNext(new PositionData(account, contract, (decimal)pos, (decimal)avgCost));
         }
 
         public void positionEnd()
@@ -384,11 +384,6 @@ namespace ReactIb
         }
 
         public void displayGroupUpdated(int reqId, string contractInfo)
-        {
-            // TODO: New Event
-        }
-
-        public void position(string account, Contract contract, double pos, double avgCost)
         {
             // TODO: New Event
         }
