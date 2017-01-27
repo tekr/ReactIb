@@ -21,6 +21,8 @@ namespace ReactIb
         private const int DefaultPort = 7496;
         private const int ReconectIntervalMs = 1000;
 
+        private const int TaqSnapshotDoneQuietIntervalMs = 80;
+
         public int ClientId { get; }
 
         public IObservable<ConnectionStatus> ConnectionStatus { get; }
@@ -172,6 +174,13 @@ namespace ReactIb
         {
             return new ListFetcher<AccountSummaryData, int>(this, _ibClient.AccountSummary, _ibClient.AccountSummaryEnd, e => e.RequestId,
                             e => e).RunAsync(r => _ibClient.ClientSocket.reqAccountSummary(r, group ?? "All", string.Join(",", tags)), scheduler);
+        }
+
+        public Task<IEnumerable<TickData>> GetTaqSnapshotAsync(Contract contract, IScheduler scheduler)
+        {
+            return new ListFetcher<TickData, TickData>(this, _ibClient.RealtimeTaq,
+                        _ibClient.RealtimeTaq.Throttle(TimeSpan.FromMilliseconds(TaqSnapshotDoneQuietIntervalMs)), e => e.RequestId,
+                            e => e.RequestId).RunAsync(r => _ibClient.ClientSocket.reqMktData(r, contract, null, true, null), scheduler);
         }
 
         public async Task SubscribeAccountUpdatesAsync(string account = null)
@@ -340,7 +349,7 @@ namespace ReactIb
             {
                 try
                 {
-                    _log.Info($"Connecting to TWS @ {_host ?? "localhost"} on port {_port} with client ID {ClientId}");
+                    _log.Info($"Connecting to TWS @ {_host} on port {_port} with client ID {ClientId}");
 
                     // Necessary to stop a race between the processing thread below and the message
                     // processing done inside the IB API when the connection is established.

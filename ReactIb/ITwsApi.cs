@@ -40,11 +40,11 @@ namespace ReactIb
         Task<IEnumerable<BarData>> GetHistoricalBarsAsync(Contract contract, DateTime startDateTime, DateTime endDateTime, BarSize barSize, HistoricalBarType barType, IScheduler scheduler = null);
         Task<IEnumerable<PositionData>> GetPositionsAsync(IScheduler scheduler = null);
         Task<IEnumerable<AccountSummaryData>> GetAccountSummaryAsync(string group, IEnumerable<string> tags, IScheduler scheduler = null);
+        Task<IEnumerable<TickData>> GetTaqSnapshotAsync(Contract contract, IScheduler scheduler = null);
 
         Task SubscribeAccountUpdatesAsync(string account = null);
         Task<IObservable<TickData>> SubscribeRealtimeTaqAsync(Contract contract);
         Task<IObservable<BarData>> SubscribeRealtimeBarsAsync(Contract contract, RealtimeBarType barType, bool regularTradingHoursOnly = false);
         Task<IObservable<DepthData>> SubscribeRealtimeDepthAsync(Contract contract, int numRows = 5);
-
     }
 }
